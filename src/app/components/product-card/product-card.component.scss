@@ -1,35 +1,9 @@
 @use 'mixins' as *;
 @use 'variables' as *;
 
-:host {
-  width: 100%;
-}
 
-main {
-  @include flex(column, center, center, 2rem);
-  width: min(1316px, 90%);
-  margin: auto;
-  padding: 1rem 0;
-  // flex-wrap: wrap;
-}
 
-.desserts {
-  @include flex(column, flex-start, stretch, 2rem);
-  width: 100%;
-  height: 100%;
-  
-  h1 {
-    @include TextPreset1;
-    color: $rose-900;
-  }
-}
 
-// dessert section
-.desserts-container {
-  // @include flex(row, flex-start, stretch, 1.5rem);
-  flex-wrap: wrap;
-  width: 100%;
-  height: 100%;
 
   .dessert-item {
     @include flex(column, flex-start, stretch, 2rem);
@@ -80,31 +54,3 @@ main {
       }
     }
   }
-}
-// cart section
-.cart {
-  width: 300px;
-  height: fit-content;
-  flex: 1 0 380px;
-  padding: 1rem;
-
-  h2 {
-    @include TextPreset2;
-    color: $red;
-  }
-
-  .content {
-    width: 100%;
-    height: fit-content;
-
-    .empty-cart-content {
-      @include flex(column, center, center);
-      width: 100%;
-      
-      p {
-        @include TextPreset4Bold;
-        color: $rose-500;
-      }
-    }
-  }
-}
