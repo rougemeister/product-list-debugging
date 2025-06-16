@@ -13,7 +13,7 @@ import { CurrencyPipe } from '@angular/common';
 })
 export class ProductListComponent implements OnInit {
   products = signal<Dessert[]>([]); 
-selectedProduct: Dessert | null = null;
+  selectedProduct: Dessert | null = null;
 
 
 
