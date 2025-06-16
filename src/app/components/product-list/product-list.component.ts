@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { CartServiceService } from '../../services/cart-service.service';
 import { Dessert } from '../../models/types';
 import { AddToCartComponent } from '../add-to-cart/add-to-cart.component';
-
+import { CurrencyPipe } from '@angular/common';
 @Component({
   selector: 'app-product-list',
   standalone: true,
