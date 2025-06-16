@@ -1,27 +1,29 @@
-import { Component,OnInit } from '@angular/core';
+import { Component, Input, input } from '@angular/core';
+import desseretData from '../../public/data.json';
 import { AddToCartComponent } from './components/add-to-cart/add-to-cart.component';
-import { Observable } from 'rxjs';
-import { Dessert } from './core/models/model';
-import { DataService } from './core/services/data.service'
-import { inject } from '@angular/core';
-import {AsyncPipe } from '@angular/common';
-import { CommonModule } from '@angular/common';
-import { ProductCardComponent } from "./components/product-card/product-card.component";
+import { NavbarComponent } from './components/add-to-cart/navbar/navbar.component';
+import { ProductListComponent } from './components/product-list/product-list.component';
+import { CartComponent } from "./components/cart/cart.component";
+
+import { Dessert } from './models/types';
+
 @Component({
   selector: 'app-root',
-  standalone: true,
-  imports: [ CommonModule, ProductCardComponent,AsyncPipe],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrls: ['./app.component.scss'],
+  standalone: true,
+  imports: [
+   
+    ProductListComponent,
+    CartComponent
+]
+  
+  
 })
+export class AppComponent {
+  title = 'Product list';
+  desserts:Dessert[] | null = null;
 
-export class AppComponent implements OnInit {
-  desserts$!: Observable<Dessert[]>;
-  dataService = inject(DataService);
-
-  ngOnInit(): void {
-    this.desserts$ = this.dataService.getDesserts(); 
-    console.log(this.desserts$);
-  }
-
+  constructor() {
+  };
 };

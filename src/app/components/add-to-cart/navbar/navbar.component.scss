@@ -1,0 +1,45 @@
+@use 'mixins' as *;
+@use 'variables' as *;
+
+:host {
+  width: 100%;
+}
+
+header {
+
+ height: 70px;
+ width: 100%;
+ position: relative;
+ z-index: 200;
+ border-bottom: 1px solid #ccc;
+ .header-container{
+     width: min(1316px, 90%);
+  margin: auto;
+  padding: 1rem 0;
+  .row{
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ gap: 1rem;
+ a{
+   @include TextPreset4;
+   color: $rose-900;
+   &:hover{
+     color: $rose-400;
+   }
+ }
+ .nav-right{
+    a{
+      @include TextPreset4;
+      color: $rose-900;
+      background: $rose-100;
+      padding: 5px 25px;
+      border-radius: 30px;
+      &:hover{
+        color: $rose-400;
+      }
+    }
+ }
+  }
+ }
+}

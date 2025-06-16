@@ -1,0 +1,204 @@
+@use '../styles/mixins' as *;
+@use '../styles/variables' as *;
+// ─── Animations ─────────────────────────────────────────────
+@keyframes slideInRight {
+  from   { transform: translateX(100%); opacity: 0; }
+  to     { transform: translateX(0);     opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to   { transform: translateY(0);     opacity: 1; }
+}
+
+@keyframes wiggle {
+  0%, 100% { transform: rotate(0); }
+  25% { transform: rotate(2deg); }
+  50% { transform: rotate(-2deg); }
+  75% { transform: rotate(2deg); }
+}
+
+// ─── Cart Wrapper ───────────────────────────────────────────
+.cart-wrapper {
+  animation: slideInRight 0.5s ease-out forwards;
+}
+
+// ─── Cart Panel ─────────────────────────────────────────────
+.cart {
+  width: 300px;
+  height: fit-content;
+  flex: 1 0 380px;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.21);
+
+  @media screen and (max-width: 888px) {
+    bottom: 0;
+    flex: 1;
+    width: 100%;
+  }
+
+  h2 {
+    @include TextPreset2;
+    color: $red;
+    margin-bottom: 1.2rem;
+
+    &:hover {
+      animation: wiggle 0.4s ease-in-out;
+    }
+  }
+
+  .content {
+    width: 100%;
+    height: fit-content;
+
+    .cart-item {
+      padding: 0rem 0;
+      border-bottom: 1px solid $rose-100;
+      animation: fadeInUp 0.4s ease-out forwards;
+      animation-delay: calc(0.05s * var(--i));
+      opacity: 0;
+
+      .item-info {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 0.8rem 0;
+
+        p {
+          @include TextPreset4;
+          color: $rose-900;
+        }
+
+        .item-text {
+          flex-direction: column;
+          gap: 0.5rem;
+          display: flex;
+
+          .product-title {
+            h4 {
+              @include TextPreset4Bold;
+              color: $rose-900;
+            }
+          }
+
+          .product-text {
+            display: flex;
+            justify-content: space-between;
+
+            p {
+              font-size: 0.7rem;
+            }
+
+            .qty {
+              @include TextPreset4;
+              color: $red;
+            }
+
+            .sub-price {
+              @include TextPreset4Bold;
+              color: $rose-500;
+            }
+          }
+        }
+
+        button {
+          position: relative;
+          width: 15px;
+          height: 15px;
+          line-height: 7.5px;
+          font-size: 10px;
+
+          &::before {
+            width: 100%;
+            height: 100%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            position: absolute;
+            content: '';
+            border-radius: 50%;
+            border: 1px solid $rose-400;
+          }
+        }
+      }
+    }
+
+    .cart-total {
+      margin-top: 1.8rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+
+      strong {
+        @include TextPreset4Bold;
+        color: $rose-900;
+        font-size: 0.9rem;
+        letter-spacing: 0.8px;
+      }
+
+      span {
+        @include TextPreset4Bold;
+        font-size: 1.29rem;
+        color: $black;
+      }
+    }
+
+    .carbon-text {
+      padding: 0.8rem 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: $rose-50;
+      margin: 1.8rem auto;
+      border-radius: 0.5em;
+      width: 100%;
+
+      img {
+        margin-right: 0.75rem;
+        width: 1.5rem;
+        height: 1.5rem;
+      }
+
+      p {
+        @include TextPreset4;
+        color: $rose-500;
+      }
+
+      button {
+        background: $red;
+        cursor: pointer;
+
+        &:hover {
+          color: $rose-500;
+        }
+      }
+    }
+
+    .checkout-button {
+      @include flex(row, center, stretch, 0.5rem);
+      padding: 0.5rem 1rem;
+      border: 1px solid $rose-400;
+      background-color: $red;
+      border-radius: 50px;
+      color: $white;
+      width: 100%;
+      cursor: pointer;
+
+      &:hover {
+        transition: all 300ms ease-in-out;
+      }
+    }
+
+    .empty-cart-content {
+      @include flex(column, center, center);
+      width: 100%;
+
+      p {
+        @include TextPreset4Bold;
+        color: $rose-500;
+      }
+    }
+  }
+}

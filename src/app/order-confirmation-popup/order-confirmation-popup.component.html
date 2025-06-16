@@ -1,0 +1,41 @@
+<div class="popup-overlay" *ngIf="isOpen" (click)="closePopup()">
+  <div class="popup-content" (click)="$event.stopPropagation()">
+    <div class="confirmation-header">
+        <div class="close-icon" (click)="closePopup()">x</div>
+      <span class="checkmark">
+        <img src="images/icon-order-confirmed.svg" alt="Checkmark" />
+      </span>
+      <h2>Order Confirmed</h2>
+      <p>We hope you enjoy your food!</p>
+    </div>
+    <div class="order-details">
+      <div *ngFor="let item of cartItems" class="order-item">
+        <div class="item-info">
+
+         <div class="item-left">
+             <img [src]="item.image?.mobile" alt="{{ item.name }}" class="item-image" />
+             <div>
+                <p class="item-name">{{ item.name }}</p>
+            <div class="item-text">
+                 <span class="quantity">x{{ item.quantity }}</span>
+             <p class="unit-price">&#64;
+{{ item.price * item.quantity | currency }}</p>
+
+
+            </div>
+             </div>
+         </div>
+        
+            <div class="item-right">
+            <p class="price">{{ item.price | currency }}</p>
+         </div>
+        </div>
+      </div>
+      <div class="order-total">
+        <strong>Order Total</strong>
+        <span>{{ totalPrice | currency }}</span>
+      </div>
+    </div>
+    <button class="start-new-order" (click)="closePopup()">Start New Order</button>
+  </div>
+</div>

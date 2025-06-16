@@ -1,7 +1,16 @@
-@use 'reset' as *;
-@use 'mixins' as *;
-@use 'variables' as *;
+@use './app/styles/reset' as *;
+@use './app/styles/mixins' as *;
+@use './app/styles/variables' as *;
 
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: $font-regular;
+  text-decoration: none;
+  list-style: none;
+
+}
 body {
   @include flex();
   width: 100%;
@@ -17,4 +26,85 @@ button {
   background-color: transparent;
   border-color: transparent;
   cursor: pointer;
+}
+
+// Custom animation
+.crazy-toast {
+  animation: crazyBounceIn 0.7s ease-out, fadeOut 0.5s ease-in 2.5s forwards;
+  border-radius: 10px;
+  padding: .5rem 1.25rem;
+  font-weight: 600;
+  transform-origin: center;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  // transition: transform 0.3s ease-in-out;
+  // display: flex;
+  // align-items: center;
+  // justify-content: center;
+  // gap: 1.2rem;
+  // position: fixed;
+  // top: 0;
+  // right: 0;
+  // margin: 10px;
+  // z-index: 10000;
+  
+}
+
+.toast-success {
+  background: linear-gradient(135deg, #00c853, #64dd17) !important;
+  color: white !important;
+}
+
+.toast-error {
+  background: linear-gradient(135deg, #d50000, #ff1744);
+  color: white !important;
+}
+
+.toast-info {
+  background: linear-gradient(135deg, #00b0ff, #00e5ff);
+  color: white !important;
+}
+
+.toast-warning {
+  background: linear-gradient(135deg, #ff9100, #ffca28);
+  color: #212121 !important;
+}
+
+// Entry animation
+@keyframes crazyBounceIn {
+  0% {
+    transform: scale(0.3) rotate(-10deg);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.05) rotate(5deg);
+    opacity: 1;
+  }
+  70% {
+    transform: scale(0.95) rotate(-2deg);
+  }
+  100% {
+    transform: scale(1) rotate(0);
+  }
+}
+
+// Exit animation
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+}
+
+.toast-close-button {
+  font-size: 1rem;
+  color: white;
+  opacity: 0.9;
+  margin-left: 1rem;
+  margin-top: .5rem;;
+  transition: transform 0.2s ease, color 0.2s ease;
+
+  &:hover {
+    color: #000;
+    transform: scale(1.3);
+  }
 }

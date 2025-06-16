@@ -1,0 +1,49 @@
+<div class="cart">
+  <h2>Your Cart ({{ totalQuantity }})</h2>
+  
+  <div class="content">
+    <ng-container *ngIf="cartItems.length > 0; else emptyCart">
+      <div *ngFor="let item of cartItems" class="cart-item">
+        <div class="item-info">
+          <div class="item-text">
+            <div class="product-title">
+              <h4>{{ item.name }}</h4>
+            </div>
+            <div class="product-text">
+              <p class="qty">{{ item.quantity }}x</p>
+              <p class="sub-price">{{ item.price | currency }}</p>
+              <p class="unit-price">{{ item.price * item.quantity | currency }}</p>
+            </div>
+          </div>
+          <button (click)="removeFromCart(item.name)">x</button>
+        </div>
+      </div>
+      
+      <div class="cart-total">
+        <strong>Order Total:</strong> <span>{{ totalPrice | currency }}</span>
+      </div>
+      <div class="carbon-text">
+        <img src="images/icon-carbon-neutral.svg" alt="carbon neutral icon">
+        <p>This is a <strong>carbon-neutral</strong> delivery</p>
+      </div>
+      <button class="checkout-button" (click)="confirmOrder()">Confirm Order</button>
+    </ng-container>
+    
+    <ng-template #emptyCart>
+      <div class="empty-cart-content">
+        <img src="images/illustration-empty-cart.svg" alt="empty cart svg" />
+        <p class="empty-cart-description">Your added items will appear here</p>
+      </div>
+    </ng-template>
+  </div>
+
+  <app-order-confirmation-popup
+    [cartItems]="cartItems"
+    [totalPrice]="totalPrice"
+    [isOpen]="showPopup"
+    (closePopup)="closePopup()"
+  ></app-order-confirmation-popup>
+
+
+
+</div>

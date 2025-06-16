@@ -1,0 +1,21 @@
+<h1>Desserts</h1>
+
+<div class="desserts-container">
+  <div class="dessert-item" *ngFor="let dessert of products()" [class.active]="isSelected(dessert)"
+  (click)="openProductDetails(dessert)" >
+    <section class="item-image-add-to-cart">
+      <picture>
+        <source media="(min-width: 1024px)" [srcset]="dessert.image.desktop">
+        <source media="(min-width: 768px)" [srcset]="dessert.image.tablet">
+        <source media="(min-width: 480px)" [srcset]="dessert.image.mobile">
+        <img [src]="dessert.image.thumbnail" [alt]="dessert.name" />
+      </picture>
+      <app-add-to-cart [product]="dessert" />
+    </section>
+    <section class="item-info">
+      <p class="category">{{ dessert.category }}</p>
+      <p class="name">{{ dessert.name }}</p>
+      <p class="price">{{ dessert.price }}</p>
+    </section>
+  </div>
+</div>

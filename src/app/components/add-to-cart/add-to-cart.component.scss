@@ -1,9 +1,9 @@
-@use 'mixins' as *;
-@use 'variables' as *;
-
+@use '../styles/mixins' as *;
+@use '../styles/variables' as *;
 .add-to-cart-container {
   width: 160px;
-  margin: -1.2rem auto;
+  margin: -1.2rem auto 0;
+  position: relative;
 }
 .add-to-cart-default, .quantity-gauge {
   @include flex(row, flex-start, stretch, 0.5rem);
@@ -14,10 +14,11 @@
 }
 .add-to-cart-default {
   @include flex(row, center, stretch, 0.5rem);
-  padding: 0.5rem 1rem;
+  padding: 0.3rem 1rem;
   border: 1px solid $rose-400;
   background-color: $white;
   border-radius: 50px;
+  // position: absolute;
 
   &:hover {
     color: $red;
@@ -45,5 +46,6 @@
     aspect-ratio: 1;
     border-radius: 100%;
     border-color: $white;
+    
   }
 }

@@ -32,6 +32,7 @@
               }
             ],
             "styles": [
+                "node_modules/ngx-toastr/toastr.css",
               "src/styles.scss"
             ],
             "stylePreprocessorOptions": {
@@ -96,6 +97,9 @@
             "styles": [
               "src/styles.scss"
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": ["./src/app/styles"]
+            },
             "scripts": []
           }
         }
@@ -103,6 +107,6 @@
     }
   },
   "cli": {
-    "analytics": "263734b7-5dd2-481a-b077-c07293494825"
+    "analytics": false
   }
 }
