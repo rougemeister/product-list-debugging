@@ -8,6 +8,12 @@
     color: $rose-900;
   } 
 
+  .active {
+    img {
+      border: 2px solid $red;
+    }
+  }
+
 .desserts-container {
   @include flex(column, flex-start, stretch, 32px); 
 
